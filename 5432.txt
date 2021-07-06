@@ -1,0 +1,27 @@
+string source = "A1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fd";
+            Console.WriteLine($"Исходная строка: {source}");
+            string sourceCopy = source;
+            StringBuilder sbOdd = new StringBuilder();
+            StringBuilder sbEven = new StringBuilder();
+            string result = null;
+            int count = int.MaxValue; int resultCount = 0;
+            for(int i=count; i>0; i--)
+            {
+                int k = 0;
+                sbEven.Clear(); sbOdd.Clear();
+                foreach (var s in sourceCopy)
+                {
+                    k++;
+                    if (k % 2 == 0)
+                        sbEven.Append(s);
+                    else sbOdd.Append(s);
+                }
+                sourceCopy = sbOdd.ToString() + sbEven.ToString();
+                resultCount++;
+                Console.WriteLine($"Строка после {resultCount}-й итерации: {sourceCopy}");
+                if (sourceCopy == source)
+                {
+                    i = 0;
+                    result = sbOdd.ToString() + sbEven.ToString();
+                    Console.WriteLine($"Строка вернулась в исходное состояние, запись в result. Пройдено итераций: {resultCount}");
+                }
