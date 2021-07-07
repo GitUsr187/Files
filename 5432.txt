@@ -1,6 +1,7 @@
 string source = "A1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fd";
             Console.WriteLine($"Исходная строка: {source}");
-            string sourceCopy = source;
+            StringBuilder sourceCopy = new StringBuilder();
+            sourceCopy.Append(source);
             StringBuilder sbOdd = new StringBuilder();
             StringBuilder sbEven = new StringBuilder();
             string result = null;
@@ -9,19 +10,23 @@ string source = "A1B2C3D5E5F6H7J562E942gdfjtry76jhgfhf7567563fdA1B2C3D5E5F6H7J56
             {
                 int k = 0;
                 sbEven.Clear(); sbOdd.Clear();
-                foreach (var s in sourceCopy)
+                foreach (var s in sourceCopy.ToString())
                 {
                     k++;
                     if (k % 2 == 0)
                         sbEven.Append(s);
                     else sbOdd.Append(s);
                 }
-                sourceCopy = sbOdd.ToString() + sbEven.ToString();
+                sourceCopy.Clear();
+                sourceCopy.Append(sbOdd.ToString() + sbEven.ToString());
                 resultCount++;
                 Console.WriteLine($"Строка после {resultCount}-й итерации: {sourceCopy}");
-                if (sourceCopy == source)
+                if (sourceCopy.ToString() == source)
                 {
                     i = 0;
                     result = sbOdd.ToString() + sbEven.ToString();
                     Console.WriteLine($"Строка вернулась в исходное состояние, запись в result. Пройдено итераций: {resultCount}");
                 }
+                
+            }
+            Console.WriteLine($"Строка-результат: { result}");
